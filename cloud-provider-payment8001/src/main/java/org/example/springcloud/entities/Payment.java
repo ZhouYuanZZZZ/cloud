@@ -1,9 +1,8 @@
 package org.example.springcloud.entities;
 
-import java.io.Serializable;
-
-public class Payment implements Serializable {
+public class Payment {
     private Long id;
+
     private String serial;
 
     public Long getId() {
@@ -19,6 +18,14 @@ public class Payment implements Serializable {
     }
 
     public void setSerial(String serial) {
-        this.serial = serial;
+        this.serial = serial == null ? null : serial.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "id=" + id +
+                ", serial='" + serial + '\'' +
+                '}';
     }
 }
