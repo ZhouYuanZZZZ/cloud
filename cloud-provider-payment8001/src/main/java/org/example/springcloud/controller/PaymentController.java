@@ -5,10 +5,7 @@ import org.example.springcloud.entities.Payment;
 import org.example.springcloud.service.PaymentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -21,7 +18,7 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @PostMapping(value = "/payment/create")
-    public CommonResult create(Payment payment){
+    public CommonResult create(@RequestBody Payment payment){
         long result = paymentService.createPayment(payment);
         logger.info("*****插入结果："+result);
         return new CommonResult(200,"插入数据库成功",result);
